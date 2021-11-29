@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product';
-import { ProductResponseModel } from 'src/app/models/productResponseModel';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -26,7 +25,6 @@ export class ProductComponent implements OnInit {
     this.productService.getProducts()
       .subscribe(data => {
         this.products = data.data
-        console.log(data.message)
         this.dataLoaded=true
       })
 
