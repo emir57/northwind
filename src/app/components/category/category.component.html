@@ -3,7 +3,12 @@
 </div>
 
 <ul class="list-group">
-  <li *ngFor="let category of categories" class="list-group-item">
+  <li (click)="setCurrentCategory(category)" *ngFor="let category of categories"
+  [ngClass]="getCurrentCategoryClass(category)"
+  >
     {{category.categoryName}}
   </li>
 </ul>
+
+<h5 class="display-6">{{currentCategory.categoryName}} Seçtiniz</h5>
+
