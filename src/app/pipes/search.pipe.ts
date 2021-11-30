@@ -7,10 +7,10 @@ import { Product } from '../models/product';
 export class SearchPipe implements PipeTransform {
 
   transform(value: Product[], searchString:string): Product[] {
-    searchString = searchString?searchString.toLowerCase():"";
+    searchString = searchString?searchString.toLocaleLowerCase():"";
 
     return searchString?
-      value.filter((p:Product)=>p.productName.toLowerCase().indexOf(searchString)!==-1):
+      value.filter((p:Product)=>p.productName.toLocaleLowerCase().indexOf(searchString)!==-1):
       value;
   }
 

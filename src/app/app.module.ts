@@ -12,6 +12,12 @@ import { TodoComponent } from './todo/todo.component';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe } from './pipes/search.pipe';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+
+import { ToastrModule } from 'ngx-toastr';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +32,12 @@ import { SearchPipe } from './pipes/search.pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     FormsModule,
+    ToastrModule.forRoot({
+      positionClass:"toast-bottom-right"
+    }),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

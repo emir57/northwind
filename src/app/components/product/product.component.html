@@ -15,6 +15,7 @@
       <th>Unit Price</th>
       <th>KDV'li Fiyat</th>
       <th>Stock</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -25,6 +26,7 @@
       <td>{{product.unitPrice}}</td>
       <td>{{product.unitPrice | vatAdded:18 | currency:'₺'}}</td>
       <td>{{product.unitsInStock}}</td>
+      <td><button (click)="addToCart(product)" class="btn btn-success">Sepete Ekle</button></td>
     </tr>
   </tbody>
 </table>
