@@ -3,12 +3,16 @@
 </div>
 
 <ul class="list-group">
+  <li (click)="clearCategory()" [ngClass]="getAllCategoryClass()"
+  routerLink="/products">
+    Tüm Ürünler
+  </li>
   <li (click)="setCurrentCategory(category)" *ngFor="let category of categories"
   [ngClass]="getCurrentCategoryClass(category)"
-  >
+  routerLink="/products/category/{{category.categoryId}}">
     {{category.categoryName}}
   </li>
 </ul>
 
-<h5 class="display-6">{{currentCategory.categoryName}} Seçtiniz</h5>
+<h5 *ngIf="currentCategory" class="display-6">{{currentCategory.categoryName}} Seçtiniz</h5>
 
