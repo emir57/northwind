@@ -3,7 +3,11 @@
     Sepetiniz
   </a>
   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-    <li *ngFor="let cartItem of cartItems"><a class="dropdown-item" href="#">{{cartItem.product.productName}}</a></li>
+    <li *ngFor="let cartItem of cartItems">
+      <a class="dropdown-item" href="#">
+        <h6><span class="badge bg-primary">{{cartItem.quantity}}</span> {{cartItem.product.productName}} <span (click)="removeFromCart(cartItem.product)" class="badge bg-danger mr-auto">Sil</span></h6>
+      </a>
+    </li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item">Sepete Git</a></li>
   </ul>

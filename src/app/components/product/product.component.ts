@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
 
@@ -25,6 +26,7 @@ export class ProductComponent implements OnInit {
     private productService: ProductService,
     private activatedRoute:ActivatedRoute,
     private toastrService:ToastrService,
+    private cartService:CartService,
     private http:HttpClient
   ) { }
 
@@ -57,7 +59,7 @@ export class ProductComponent implements OnInit {
 
   addToCart(product:Product){
     this.toastrService.success(product.productName)
-    console.log(product)
+    this.cartService.addToCart(product)
   }
 
 
