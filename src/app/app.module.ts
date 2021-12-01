@@ -15,6 +15,7 @@ import { SearchPipe } from './pipes/search.pipe';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 import { ToastrModule } from 'ngx-toastr';
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 
 
 
@@ -26,7 +27,8 @@ import { ToastrModule } from 'ngx-toastr';
     NaviComponent,
     TodoComponent,
     VatAddedPipe,
-    SearchPipe
+    SearchPipe,
+    CartSummaryComponent
   ],
   imports: [
     BrowserModule,
