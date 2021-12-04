@@ -1,6 +1,8 @@
 import { getLocaleDateTimeFormat } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,FormControl,Validators } from "@angular/forms";
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +12,9 @@ export class LoginComponent implements OnInit {
 
   loginForm:FormGroup
   constructor(
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
+    private authService:AuthService,
+    private toastrService:ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -25,9 +29,19 @@ export class LoginComponent implements OnInit {
 
   login(){
     if(this.loginForm.valid){
-      console.log(this.loginForm.value)
+      let loginModel = Object.assign({},this.loginForm.value);
+      this.authService.login(loginModel)
+        .subscribe(response=>{
+          if(response.success){
+            this.toastrService.success("Giriş Başarılı");
+            localStorage.setItem("token",response.data.token);
+            this.toastrService.info("Token Oluşturuldu");
+          }
+        },responseError=>{
+          this.toastrService.error(responseError.error)
+        })
     }else{
-      console.log("a")
+
     }
   }
 
